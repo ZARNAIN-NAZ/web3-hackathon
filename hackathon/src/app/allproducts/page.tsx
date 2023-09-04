@@ -5,11 +5,12 @@ import Link from "next/link";
 
 export default async function page() {
   const data = await FetchData();
-  console.log("data", data[0].slug);
+  const res = await data.json();
+  console.log("data", res);
 
   return (
     <div className="flex gap-5 max-w-6xl m-auto text-black">
-      {data.map((product: any, index: number) => (
+      {res.result.map((product: any, index: number) => (
         <Link
           href={`/product/${product.slug.current}`}
           className="w-1/4 border border-black p-2"
